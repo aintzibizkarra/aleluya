@@ -14,6 +14,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
+const babel = require('gulp-babel');
 
 /*
 * Tareas
@@ -28,23 +29,35 @@ gulp.task('concatenar', function() {
 gulp.task('sass', function () {
   return gulp.src('src/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('dist/css/'));
+    .pipe(gulp.dest('./dist/css/'));
 });
 
 gulp.task('sass', function () {
     gulp.src('src/sass/**/*.scss')
         .pipe(sass({outputStyle: 'expanded'}).on('error',sass.logError))
-        .pipe(gulp.dest('dist/css/'))
+        .pipe(gulp.dest('./dist/css/'))
+});
+
+gulp.task('es6toes5', () =>
+    gulp.src('./src/js/main.js')
+        .pipe(babel({
+            presets: ['env']
+        }))
+        .pipe(gulp.dest('./dist/js/'))
+);
+
+gulp.task('move', function(){
+    gulp.src('./src/js/*.js')
+        .pipe(gulp.dest('./dist/js/'));
 });
 
 
 
-
-/*Definir tarea por defecto, se hace automatico con gulp*/
+/*Definir tareas por defecto, se hace automatico con gulp*/
 
 gulp.task('default',function() {
 
-    gulp.watch('src/**/*.*',['concatenar','sass']);
+    gulp.watch('src/**/*.*',['concatenar','sass','move']);
 
 });
 
