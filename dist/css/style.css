@@ -1,0 +1,38 @@
+/*Border redondo*/
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* /Reset */
+/* Elementos*/
+h1 {
+  color: #357997;
+}
+
+/* /Elementos */
+.container {
+  margin: auto;
+  max-width: 1024px;
+}
+
+.btn, .btn-azul {
+  border: 1px solid #357997;
+  color: #EF6B00;
+  display: inline-block;
+  height: 50px;
+  width: 100px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.btn:hover, .btn-azul:hover {
+  background-color: #1D1A1C;
+}
+
+.btn-azul:hover {
+  background-color: aqua;
+}

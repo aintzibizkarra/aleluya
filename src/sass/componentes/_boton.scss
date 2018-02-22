@@ -1,0 +1,22 @@
+%btn-generico{
+    border: 1px solid $color-primary;
+    color: $color-secondary;
+    display: inline-block;
+    height: 50px;
+    width: 100px;
+    @include border-radius(10px);
+        &:hover{
+            background-color: $color-accent;
+        }
+}
+
+.btn{
+     @extend %btn-generico;
+}
+
+.btn-azul{
+    @extend %btn-generico;
+    &:hover{
+        background-color: aqua;
+    }
+}
